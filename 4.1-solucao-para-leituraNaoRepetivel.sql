@@ -5,7 +5,7 @@ SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 	FROM contas_pagar
 	WHERE TO_CHAR(data_vencimento, 'YYYY-MM') = '2023-12';
 
--- transação 2
+-- transação T2
 BEGIN;
 SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 	UPDATE contas_pagar
@@ -13,3 +13,8 @@ SET TRANSACTION ISOLATION LEVEL REPEATABLE READ;
 	WHERE TO_CHAR(data_vencimento, 'YYYY-MM') = '2023-12';
 COMMIT;
 
+-- transação T1
+  COMMIT; 
+	SELECT numero, data_vencimento
+	FROM contas_pagar
+	WHERE TO_CHAR(data_vencimento, 'YYYY-MM') = '2023-12';	
