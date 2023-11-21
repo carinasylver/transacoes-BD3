@@ -21,3 +21,11 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 		VALUES(09, 3000, '2023-11-20', 201, 105, 09);
 	--DELETE FROM vendas WHERE numero = 09;
 COMMIT;
+
+-- transacao T1
+COMMIT; 
+
+SELECT f.nome, v.* 
+FROM vendas v
+JOIN funcionarios f USING(codfunc)
+WHERE f.nome ILIKE 'mariana costa';
